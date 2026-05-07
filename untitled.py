@@ -1,9 +1,9 @@
-'''A module for calculating the two alpha diversity metrics, Shannon diversity and Sobs, and connecting that dataset with the metadata and rarefied OTU table'''
+'''A module used making violin plots showing the Shannon diversity and observed taxa from my water and sediment samples grouped various ways, grouped by year and grouped by port and dosing'''
 
-from skbio.diversity import alpha_diversity
-import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-def merged_data(rarefied_OTUs, metadata):
+def violin_plots_year(datasets):
     Shannon = alpha_diversity('shannon', rarefied_OTUs)
     Sobs = alpha_diversity('sobs', rarefied_OTUs)
     adiv = pd.concat([Shannon, Sobs], axis=1)
@@ -18,5 +18,5 @@ def merged_data(rarefied_OTUs, metadata):
        rarefied_OTUs - Rarefied OTU tables. Sample names are in first column, and OTU counts in other columns.  
        metadata - Metadata. Sample names in first column, other measurements in other columns.
        Returns:
-       final_data - The final dataset I will use in my analyses.'''
+       merged_data - The final dataset I will use in my analyses.'''
   
